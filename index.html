@@ -75,7 +75,24 @@
 		function BMI() {
 			var h=document.getElementById('h').value;
 			var w=document.getElementById('w').value;
-			var bmi=w/(h/100*h/100);
+			if(h.length==0 || w.length==0){
+				alert("enter values for height and weight");
+				return;
+			}
+			h=Number(h);
+			h=h/100;
+			w=Number(w);
+			console.log(typeof h);
+			console.log(typeof w);
+			if(h<0 || w<0){
+				alert("enter postive values for height and weight");
+				return;
+			}
+			if(typeof h !="number" || typeof w != "number" || isNaN(h) || isNaN(w)){
+				alert("enter appropriate values");
+				return;
+			}
+			var bmi=w/(h*h);
 			var bmio=(bmi.toFixed(2));
 
 			document.getElementById("result").innerHTML="Your BMI is " + bmio;
